@@ -1,0 +1,57 @@
+{
+  "tools": [
+    {
+      "name": "lookup_customer",
+      "description": "Gets customer.",
+      "strict": true,
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "data": { "type": "string" },
+          "age": { "type": "integer", "minimum": 0, "description": "Age of the customer in years." },
+          "address": {
+            "type": "object",
+            "description": "Postal address of the customer.",
+            "properties": {
+              "city": { "type": "string", "description": "City name on the address." }
+            }
+          },
+          "metadata": {
+            "type": "object",
+            "description": "Free-form key and value pairs to store.",
+            "additionalProperties": true
+          }
+        },
+        "required": ["data", "data", "email"]
+      }
+    },
+    {
+      "name": "fetch_customer",
+      "description": "Gets customer record.",
+      "input_schema": {
+        "properties": {
+          "data": { "type": "string", "description": "data" }
+        }
+      }
+    },
+    {
+      "name": "run",
+      "description": "Helper function for various things.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "sort": {
+            "type": "string",
+            "description": "Sort direction, either 'asc' or 'desc'."
+          },
+          "unit": { "type": "string", "description": "Measurement unit of the reply." },
+          "color": {
+            "type": "string",
+            "enum": ["red", "green", "red", 7],
+            "description": "Display colour of the row."
+          }
+        }
+      }
+    }
+  ]
+}

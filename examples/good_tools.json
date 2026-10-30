@@ -1,0 +1,45 @@
+{
+  "tools": [
+    {
+      "name": "get_order_status",
+      "description": "Returns the fulfilment status and last update time of one order. Use this tool when the user asks where an order is or whether it has shipped. Do not use it to search for orders by customer. It returns nothing about payment.",
+      "strict": true,
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "order_id": {
+            "type": "string",
+            "description": "Order identifier as printed on the receipt, for example ORD-1042."
+          },
+          "detail": {
+            "type": "string",
+            "enum": ["summary", "full"],
+            "description": "How much history to include in the reply."
+          }
+        },
+        "required": ["order_id"],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "cancel_shipment",
+      "description": "Stops a shipment that has not left the warehouse. Use this tool when the user explicitly asks to stop delivery. Do not use it after dispatch, because the carrier cannot recall a parcel. It does not refund the payment.",
+      "strict": true,
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "shipment_id": {
+            "type": "string",
+            "description": "Shipment identifier from a previous order status reply."
+          }
+        },
+        "required": ["shipment_id"],
+        "additionalProperties": false
+      }
+    },
+    {
+      "type": "web_search_20260209",
+      "name": "web_search"
+    }
+  ]
+}
